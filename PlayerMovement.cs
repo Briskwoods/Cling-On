@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_playerController = GetComponent<CharacterController>();
         m_initialSpeed = m_speed;
-
+        m_playerAnim.SetBool("Run", true);
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         //m_playerController.Move(Vector3.forward * m_speed * Time.deltaTime);
         transform.Translate(Vector3.forward * m_speed * Time.deltaTime);
         
-        m_playerAnim.SetBool("Run", true);
+        m_playerAnim.SetFloat("Speed", m_speed);
 
         if (Input.GetMouseButtonDown(0))
         {

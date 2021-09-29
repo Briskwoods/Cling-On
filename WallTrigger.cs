@@ -28,6 +28,14 @@ public class WallTrigger : MonoBehaviour
                 break;
             case false: break;
         }
+
+        switch (col.tag == "Runner")
+        {
+            case true:
+                col.gameObject.GetComponent<RunnerController>().m_speed = col.gameObject.GetComponent<RunnerController>().m_initialSpeed;
+                break;
+            case false: break;
+        }
     }
 
     private void OnTriggerStay(Collider other)

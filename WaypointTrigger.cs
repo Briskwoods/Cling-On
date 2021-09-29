@@ -17,4 +17,28 @@ public class WaypointTrigger : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        switch (other.tag == "Runner")
+        {
+            case true:
+                other.GetComponent<RunnerController>().target = nextTarget;
+                break;
+            case false:
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.tag == "Runner")
+        {
+            case true:
+                other.GetComponent<RunnerController>().target = nextTarget;
+                break;
+            case false:
+                break;
+        }
+    }
 }
