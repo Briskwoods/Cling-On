@@ -56,7 +56,7 @@ public class StickToEnemy : MonoBehaviour
                 m_myAnimator.SetBool("Cling", true);
                 m_boneScript.enabled = true;
                 m_randomSpeedScript.enabled = true;
-                m_myOutline.enabled = true;
+                //m_myOutline.enabled = true;
                 transform.localScale = new Vector3(5f, 5f, 5f);
                 transform.localPosition = new Vector3(0f, 0f, 0f);
                 transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -89,7 +89,7 @@ public class StickToEnemy : MonoBehaviour
                 m_boneScript.enabled = false;
                 m_randomSpeedScript.enabled = false;
                 transform.parent = other.transform;
-                m_myOutline.enabled = false;
+                //m_myOutline.enabled = false;
                 break;
             case false:
                 break;

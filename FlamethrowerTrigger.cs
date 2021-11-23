@@ -14,7 +14,8 @@ public class FlamethrowerTrigger : MonoBehaviour
             case true:
                 Destroy(col.gameObject);
                 int randomIndex = Random.Range(0, m_splatterPoint.Count);
-                Instantiate(m_splatter,m_splatterPoint[randomIndex].transform);
+                GameObject Obj  = Instantiate(m_splatter,m_splatterPoint[randomIndex].transform);
+                Obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 break;
             case false: break;
         }

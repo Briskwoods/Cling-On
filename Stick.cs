@@ -54,7 +54,6 @@ public class Stick : MonoBehaviour
 
     public void ChangeLayersRecursively(Transform trans, string name)
     {
-        Debug.Log(""+trans.gameObject.name);
         trans.gameObject.layer = LayerMask.NameToLayer(name);
         foreach (Transform child in trans.GetComponentsInChildren<Transform>())
         {

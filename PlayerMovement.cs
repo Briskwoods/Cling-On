@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController m_playerController;
     [SerializeField] private Animator m_playerAnim;
+    public bool IsPlayer;
+    public CinemachineVirtualCamera CineCamera;
     
     public float m_speed = 150;
     public float m_initialSpeed;
@@ -19,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private float Direction;
     private float Percent;
     private float XPos;
-
+    public float percent;
 
 
     // Start is called before the first frame update
@@ -37,6 +40,13 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(Vector3.forward * m_speed * Time.deltaTime);
         
         m_playerAnim.SetFloat("Speed", m_speed);
+
+        //Evans - Update the camera field of view
+        if (IsPlayer)
+        {
+            UpdateCameraDistance();
+        }
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -79,5 +89,17 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector3(XPos, transform.position.y, transform.position.z);
             }
         }
+    }
+
+    public void UpdateCameraDistance()
+    {
+        float maxSpeed = 150f;
+        float minSpeed = 50f;
+
+         percent = ((m_speed - minSpeed) / (maxSpeed - minSpeed));
+        
+        float result = percent * 30f;
+
+        CineCamera.m_Lens.FieldOfView = Mathf.Lerp(CineCamera.m_Lens.FieldOfView, 75f + result, 5f * Time.deltaTime);
     }
 }
