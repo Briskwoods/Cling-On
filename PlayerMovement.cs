@@ -93,12 +93,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateCameraDistance()
     {
-        float maxSpeed = 150f;
-        float minSpeed = 50f;
+        float maxSpeed = 180;
+        float minSpeed = 80f;
 
          percent = ((m_speed - minSpeed) / (maxSpeed - minSpeed));
         
-        float result = percent * 30f;
+        float result = percent * 27f;
 
         CineCamera.m_Lens.FieldOfView = Mathf.Lerp(CineCamera.m_Lens.FieldOfView, 75f + result, 5f * Time.deltaTime);
     }
